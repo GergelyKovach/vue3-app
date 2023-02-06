@@ -5,6 +5,8 @@ import NearbyPage from "../pages/home/NearbyPage.vue";
 import FavoritesPage from "../pages/home/FavoritesPage.vue";
 import MePage from "../pages/home/MePage.vue";
 import SigninPage from "../pages/SigninPage.vue";
+import TrackingPage from "../pages/home/TrackingPage.vue";
+import TimerListPage from "../pages/home/TimerListPage.vue";
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
@@ -14,6 +16,14 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/home",
         component: HomePage,
+      },
+      {
+        path: "/timer",
+        component: TrackingPage,
+      },
+      {
+        path: "/timer-list",
+        component: TimerListPage,
       },
       {
         path: "/nearby",

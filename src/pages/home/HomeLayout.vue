@@ -16,6 +16,9 @@
       <v-list-item to="/home">
         <v-list-item-title>Home</v-list-item-title>
       </v-list-item>
+      <v-list-item to="/tracking">
+        <v-list-item-title>Tracking</v-list-item-title>
+      </v-list-item>
       <v-list-item to="/favorites">
         <v-list-item-title>Favorites</v-list-item-title>
       </v-list-item>
@@ -39,13 +42,13 @@
       <v-icon icon="mdi-heart"></v-icon>
       <span>Favorites</span>
     </v-btn>
-    <v-btn to="/nearby" color="primary" replace>
-      <v-icon icon="mdi-map-marker"></v-icon>
-      <span>Nearby</span>
+    <v-btn to="/timer-list" color="primary" replace>
+      <v-icon icon="mdi-list-box"></v-icon>
+      <span>TImer List</span>
     </v-btn>
-    <v-btn to="/me" color="primary" replace>
-      <v-icon icon="mdi-account"></v-icon>
-      <span>Me</span>
+    <v-btn to="/timer" color="primary" replace>
+      <v-icon icon="mdi-timer"></v-icon>
+      <span>Timer</span>
     </v-btn>
   </v-bottom-navigation>
 </template>

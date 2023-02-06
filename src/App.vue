@@ -1,5 +1,5 @@
 <template>
-  <v-theme-provider root :theme="theme">
+  <!-- <v-theme-provider root :theme="theme"> -->
     <v-app>
       <router-view></router-view>
       <v-overlay
@@ -23,7 +23,7 @@
         {{ error.message }}
       </v-snackbar>
     </v-app>
-  </v-theme-provider>
+  <!-- </v-theme-provider> -->
 </template>
 
 <script>
