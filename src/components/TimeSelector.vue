@@ -29,7 +29,7 @@ export default {
         // SmoothPicker,
         VueScrollPicker
     },
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'updateResult'],
     props: {
         modelValue: {
             type: Number,
@@ -51,8 +51,9 @@ export default {
                 this.minutes = Math.floor(((newValue) % 3600) / 60)
                 this.seconds = Math.floor(((newValue) - (this.hours * 3600) - (this.minutes * 60)))
                 // console.log(newValue)
-                // console.log(newValue)
-                // this.$emit('update:modelValue', newValue)
+                console.log(newValue)
+                
+                this.$emit('updateResult', newValue)
             },
             immediate: true
         },

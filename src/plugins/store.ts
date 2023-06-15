@@ -1,5 +1,7 @@
 import { reactive } from 'vue'
 
 export const store = reactive({
-  timers: []
+  timers: [],
+  timerObjs: {},
+  selectedTimer: '',
 })

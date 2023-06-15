@@ -159,6 +159,9 @@ class Timer {
     private interval: Object;
     private finished: boolean;
     private timeToCountdownFromCounterFormatted: string;
+    private beingEdited: boolean;
+    private name: string;
+    private tags: Array<string>;
 
     constructor(parameters: Object) {
         this.uuid = uuidv4()
@@ -173,6 +176,9 @@ class Timer {
         this.interval = {};
         this.finished = false;
         this.timeToCountdownFromCounterFormatted = '';
+        this.beingEdited = false;
+        this.name = '';
+        this.tags = [];
 
         // overwrite the default values with the parameters
         for (let key in parameters) {
@@ -181,6 +187,35 @@ class Timer {
         
         this.formatAfterIncrement()
 
+    }
+    
+    public getRepresentation() {
+        
+        return {
+            countdownFrom: this.countdownFrom,
+            countdownFromFormatted: this.countdownFromFormatted,
+            finished: this.finished,
+            interval: this.interval,
+            name: this.name,
+            obj: this,
+            percentageLeft: this.percentageLeft,
+            progressValue: this.progressValue,
+            tags: this.tags,
+            timeLeftCounter: this.timeLeftCounter,
+            timeLeftFormatted: this.timeLeftFormatted,
+            timeSpent: this.timeSpent,
+            timeSpentFormatted: this.timeSpentFormatted,
+            timeToCountdownFromCounterFormatted: this.timeToCountdownFromCounterFormatted,
+            uuid: this.uuid
+        }
+    }
+    
+    get countDownFrom() {
+        return this.countdownFrom
+    }
+    set countDownFrom(value) {
+        this.countdownFrom = value
+        this.formatAfterIncrement()
     }
 
     private formatTime(date: Date) {
@@ -229,6 +264,7 @@ class Timer {
     }
 
     public formatAfterIncrement() {
+        this.timeLeftCounter = this.countdownFrom - this.timeSpent
         let dateToGo = new Date(this.timeLeftCounter * 1000);
         let dateSpent = new Date(this.timeSpent * 1000);
         // we need to get the hour, minute and second from the date object
@@ -262,6 +298,27 @@ class Timer {
             }
         }, 1000);
 
+    }
+    
+    public toggleBeingEdited() {
+        console.log('toggle being edited')
+        this.beingEdited = !this.beingEdited;
+    }
+    
+    public setFinished() {
+        this.finished = true;
+    }
+    
+    public toggleFinished() {
+        this.finished = !this.finished;
+    }
+    
+    public togglePauseContinue() {
+        if (typeof this.interval == 'number') {
+            this.pauseTimer();
+        } else {
+            this.continueTimer();
+        }
     }
     
     public pauseTimer() {
